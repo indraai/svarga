@@ -1,3 +1,5 @@
+// Copyright (c)2020 Quinn Michaels
+
 'use strict'
 
 const {EventEmitter} = require('events');
