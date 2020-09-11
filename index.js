@@ -1,7 +1,4 @@
 // Copyright (c)2020 Quinn Michaels
-
-'use strict'
-
 const {EventEmitter} = require('events');
 class Svarga {
   constructor(opts) {
@@ -237,19 +234,6 @@ class Svarga {
       this.deva[x].init();
     }
     return Promise.resolve();
-  }
-
-  // axios functions
-  getUrl(url, packet) {
-    return axios.get(url, packet)
-  }
-
-  postUrl(url, data) {
-    return axios.post(url, data);
-  }
-
-  createUrl(config) {
-    return axios.create(config)
   }
 
 }
