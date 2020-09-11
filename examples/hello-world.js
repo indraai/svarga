@@ -1,7 +1,5 @@
 // Copyright (c)2020 Quinn Michaels
-
-const Svarga = require('@indra.ai/svarga');
-
+const Svarga = require('../index');
 const HelloWorld = new Svarga({
   me: {
     key: 'hello',
@@ -49,7 +47,7 @@ const HelloWorld = new Svarga({
   onStart() {
     console.log(this.methods.hello());
   },
-  
+
   onStop() {},
   onLoaded() {},
   onLogout() {},
