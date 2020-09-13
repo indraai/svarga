@@ -178,7 +178,7 @@ class Svarga {
         text: `#${key} ${method}`,
         meta: {
           format: key,
-          method,
+          type: method,
         },
         data: false,
         error: err,
