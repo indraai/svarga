@@ -159,29 +159,30 @@ class Svarga {
     });
 
     this.methods[method](packet).then(result => {
-      packet.answered = Date.now();
       packet.a = {
         bot: this.me,
         text: result.text || `#${key} ${method}`,
-        data: {
+        meta: {
           format: key,
           type: method,
-          result,
-          error: false,
         },
+        data: result,
+        error: false,
+        created: Date.now(),
       };
       this.talk(`${key}:question:${packet.id}`, packet);
+
     }).catch(err => {
-      packet.answered = Date.now();
       packet.a = {
         bot: this.me,
         text: `#${key} ${method}`,
-        data: {
+        meta: {
           format: key,
-          type: method,
-          result: false,
-          error: err,
+          method,
         },
+        data: false,
+        error: err,
+        created: Date.now(),
       };
       this.talk(`${key}:question:${packet.id}`, packet);
       this.talk('error', {type: `#${key}:question`, packet, err})
@@ -194,6 +195,14 @@ class Svarga {
     this.talk(`status`, {
       id,
       text,
+      a: {
+        bot: this.me,
+        text,
+        meta: {
+          format: this.me.key,
+          type: 'status'
+        }
+      }
       data:{
         key: this.me.key,
         text: this.running,
