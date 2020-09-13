@@ -4,7 +4,7 @@
   "description": "Lightweight EVENT ENGINE.",
   "main": "index.js",
   "engines": {
-    "node": ">=6s.0"
+    "node": ">=6.0"
   },
   "repository": {
     "type": "git",
