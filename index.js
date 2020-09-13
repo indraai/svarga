@@ -194,6 +194,7 @@ class Svarga {
     const text = `${this.me.key} ${this.running ? 'RUNNING' : 'STOPPED'}`
     this.talk(`status`, {
       id,
+      key: this.me.key,
       text,
       a: {
         bot: this.me,
@@ -201,13 +202,13 @@ class Svarga {
         meta: {
           format: this.me.key,
           type: 'status'
-        }
-      }
-      data:{
-        key: this.me.key,
-        text: this.running,
+        },
+        data:{
+          running: this.running,
+        },
+        error: false,
+        created: Date.now(),
       },
-      created: Date.now(),
     });
     return Promise.resolve(this.running);
   }
