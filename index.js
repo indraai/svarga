@@ -112,13 +112,14 @@ class Svarga {
     packet.a = {
       bot: this.me,
       text: `${this.me.name} is OFFLINE`,
-      data: {
+      meta: {
         key: this.me.key,
         format: 'OFFLINE',
-        result: false,
-        error: false,
-      }
-    }
+      },
+      data: false,
+      error: false,
+      created: Date.now(),
+    };
     this.talk(`${this.me.key}:question:${packet.id}`, packet);
   }
 
@@ -127,13 +128,14 @@ class Svarga {
     packet.a = {
       bot: this.me,
       text: `${this.me.key} ${packet.q.params[0]} is not a valid method`,
-      data: {
+      meta: {
         key: this.me.key,
         format: packet.q.params[0],
-        result: false,
-        error: false,
-      }
-    }
+      },
+      data: false,
+      error: false,
+      created: Date.now(),
+    };
     this.talk(`${this.me.key}:question:${packet.id}`, packet);
   }
 
