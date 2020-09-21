@@ -143,14 +143,13 @@ class Svarga {
     const {name, key} = this.me;
     const repReg = new RegExp(`^#${key} `, 'gi');
     packet.q.text_orig = packet.q.text;
-    packet.q.text = packet.q.text.replace(repReg, '').replace(/(^|\s)(:id:)(\s|$)/g, `$1#${packet.id}$3`);
+    packet.q.text = packet.q.text.replace(repReg, '').replace(/(^|\s)(:id:)(\s|$)/g, `$1#Q${packet.id}$3`);
 
     const q = packet.q.text.split(' ');
-    packet.q.params = q[0].split(':');
+    packet.q.meta.params = q[0].split(':');
     packet.q.text = q.slice(1).join(' ').trim();
-    packet.asked = Date.now();
 
-    const method = packet.q.params[0];
+    const method = packet.q.meta.params[0];
 
     if (!this.methods[method]) return setImmediate(() => {
       this._methodNotFound(packet);
