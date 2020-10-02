@@ -108,7 +108,6 @@ class Svarga {
   }
 
   _notRunning(packet) {
-    packet.answered = Date.now();
     packet.a = {
       bot: this.me,
       text: `${this.me.name} is OFFLINE`,
@@ -124,13 +123,12 @@ class Svarga {
   }
 
   _methodNotFound(packet) {
-    packet.answered = Date.now();
     packet.a = {
       bot: this.me,
-      text: `${this.me.key} ${packet.q.params[0]} is not a valid method`,
+      text: `${this.me.key} ${packet.q.meta.params[0]} is not a valid method`,
       meta: {
         key: this.me.key,
-        format: packet.q.params[0],
+        format: packet.q.meta.params[0],
       },
       data: false,
       error: false,
@@ -186,7 +184,12 @@ class Svarga {
         created: Date.now(),
       };
       this.talk(`${key}:question:${packet.id}`, packet);
-      this.talk('error', {type: `#${key}:question`, packet, err})
+      this.talk('error', {
+        id: this.uid(),
+        err: err.toString(),
+        packet,
+        created: Date.now(),
+      });
     });
   }
 
