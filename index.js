@@ -180,13 +180,12 @@ class Svarga {
           type: method,
         },
         data: false,
-        error: err,
+        error: err.toString(),
         created: Date.now(),
       };
       this.talk(`${key}:question:${packet.id}`, packet);
       this.talk('error', {
         id: this.uid(),
-        err: err.toString(),
         packet,
         created: Date.now(),
       });
