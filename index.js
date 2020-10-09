@@ -186,6 +186,7 @@ class Svarga {
       this.talk(`${key}:question:${packet.id}`, packet);
       this.talk('error', {
         id: this.uid(),
+        error: err.toString(),
         packet,
         created: Date.now(),
       });
