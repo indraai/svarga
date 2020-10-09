@@ -1,6 +1,6 @@
 {
   "name": "@indra.ai/svarga",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "description": "Lightweight EVENT ENGINE.",
   "main": "index.js",
   "engines": {
