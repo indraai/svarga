@@ -190,6 +190,7 @@ class Svarga {
         packet,
         created: Date.now(),
       });
+      console.error(err);
     });
   }
 
