@@ -139,7 +139,7 @@ class Svarga {
 
   question(packet) {
     const {name, key} = this.me;
-    const repReg = new RegExp(`^#${key} `, 'gi');
+    const repReg = new RegExp(`^!${key} `, 'gi');
     packet.q.text_orig = packet.q.text;
     packet.q.text = packet.q.text.replace(repReg, '').replace(/(^|\s)(:id:)(\s|$)/g, `$1#Q${packet.id}$3`);
 
@@ -160,7 +160,7 @@ class Svarga {
     this.methods[method](packet).then(result => {
       packet.a = {
         bot: this.me,
-        text: result.text || `#${key} ${method}`,
+        text: result.text || `!${key} ${method}`,
         meta: {
           format: key,
           type: method,
@@ -174,7 +174,7 @@ class Svarga {
     }).catch(err => {
       packet.a = {
         bot: this.me,
-        text: `#${key} ${method}`,
+        text: `!${key} ${method}`,
         meta: {
           format: key,
           type: method,
@@ -242,7 +242,7 @@ class Svarga {
       if (deva) this.initDeva();
       if (this.onInit) return this.onInit.call(this);
     }).catch(err => {
-      this.talk('error', {type: `#${this.me.key}:init`, err})
+      this.talk('error', {type: `!${this.me.key}:init`, err})
       return console.error(err);
     });
   }
